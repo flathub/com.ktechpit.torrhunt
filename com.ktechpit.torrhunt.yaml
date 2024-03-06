@@ -62,7 +62,8 @@ modules:
       - type: file
         # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/torrhunt | jq '."channel-map"' | jq '.[]' | jq '[."download"."url"]' | grep -m1 https | tr -d ' ' | tr -d '"'
         # also update build-command whenever update url
-        url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_19.snap
+        url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_20.snap
         only-arches:
           - x86_64
-        sha256: 843159fdd8a6052bb34a18074100a1755f8ac4560b6d1a9651e2c6fbd169c158
+        # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_20.snap | sha256sum		
+        sha256: 8549bc0b95b148ba49b2d0680a6afedd3266d12d4d99808c0a641aeb73c1bce6
