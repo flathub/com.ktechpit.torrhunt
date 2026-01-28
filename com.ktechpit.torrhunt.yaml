@@ -1,8 +1,8 @@
 app-id: com.ktechpit.torrhunt
-base: io.qt.qtwebkit.BaseApp
-base-version: '5.15-22.08'
+base: io.qt.qtwebengine.BaseApp
+base-version: '6.10'
 runtime: org.kde.Platform
-runtime-version: 5.15-22.08
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 command: torrhunt
 finish-args:
@@ -12,40 +12,13 @@ finish-args:
   - --socket=wayland
   - --device=dri
   - --env=INSTALL_TYPE=flatpak
-  - --talk-name=org.freedesktop.FileManager1
-  - --filesystem=xdg-run/gvfsd
 
 cleanup:
   - /include
   - /lib/pkgconfig
 
 modules:
-  - name: lzo
-    config-opts:
-      - --enable-shared
-      - --disable-static
-    cleanup:
-      - /include
-      - /share/doc
-      - '*.la'
-      - /lib/*.so
-    sources:
-      - type: archive
-        url: http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
-        sha256: c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072
-
-
-  - name: squashfs-tools
-    buildsystem: simple
-    build-commands:
-      - XZ_SUPPORT=1 LZO_SUPPORT=1 make -C squashfs-tools -j ${FLATPAK_BUILDER_N_JOBS} install INSTALL_DIR=${FLATPAK_DEST}/bin
-    cleanup:
-      - '*'
-    sources:
-    - type: git
-      url: https://github.com/plougher/squashfs-tools.git
-      tag: '4.5'
-      commit: '0496d7c3de3e09da37ba492081c86159806ebb07'
+  - shared-modules/squashfs-tools/squashfs-tools.json
 
   - name: torrhunt
     buildsystem: simple
@@ -59,12 +32,34 @@ modules:
       - desktop-file-edit --set-icon=${FLATPAK_ID} ${FLATPAK_DEST}/share/applications/com.ktechpit.torrhunt.desktop
       - install -Dm644 squashfs-root/usr/share/metainfo/com.ktechpit.torrhunt.metainfo.xml ${FLATPAK_DEST}/share/metainfo/com.ktechpit.torrhunt.metainfo.xml
     sources:
-      - type: file
-        # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/torrhunt | jq '."channel-map"' | jq '.[]' | jq '[."download"."url"]' | grep -m1 https | tr -d ' ' | tr -d '"'
-        # also update build-command whenever update url
-        url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_20.snap
-        only-arches:
-          - x86_64
-        # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_20.snap | sha256sum		
-        sha256: 8549bc0b95b148ba49b2d0680a6afedd3266d12d4d99808c0a641aeb73c1bce6
+        # =========================
+        # x86_64 (amd64) – stable
+        # =========================
+        - type: file
+          # Get stable amd64 snap URL:
+          # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/torrhunt | jq -r '.["channel-map"][] | select(.channel.architecture=="amd64" and   .channel.risk=="stable" and .channel.track=="latest") | .download.url'
+          url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_27.snap
+
+          # Get sha256:
+          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_27.snap | sha256sum
+          sha256: 9cb7d22934c175560404ff8a6cbb49c023a172dad2ab6b1f472ed99e879333fe
+
+          only-arches:
+            - x86_64
+
+        # =========================
+        # arm64 (aarch64) – stable
+        # =========================
+        - type: file
+          # Get stable arm64 snap URL:
+          # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/torrhunt | jq -r '.["channel-map"][] | select(.channel.architecture=="arm64" and  .channel.risk=="stable" and .channel.track=="latest") | .download.url'
+          url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_28.snap
+
+          # Get sha256:
+          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_28.snap | sha256sum
+          sha256: 8b49006d5dd6f2f608f9b2f467f3d68e87b2b197d5fc27448ea6162a999db821
+
+          only-arches:
+            - aarch64
+
 #END 2024-05-10
