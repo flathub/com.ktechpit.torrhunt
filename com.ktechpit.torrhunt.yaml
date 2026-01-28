@@ -12,8 +12,6 @@ finish-args:
   - --socket=wayland
   - --device=dri
   - --env=INSTALL_TYPE=flatpak
-  - --talk-name=org.freedesktop.FileManager1
-  - --filesystem=xdg-run/gvfsd
 
 cleanup:
   - /include
