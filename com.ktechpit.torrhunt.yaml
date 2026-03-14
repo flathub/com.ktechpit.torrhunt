@@ -16,6 +16,12 @@ finish-args:
 cleanup:
   - /include
   - /lib/pkgconfig
+  - /lib/cmake
+  - /share/man
+  - /share/doc
+
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
 
 modules:
   - shared-modules/squashfs-tools/squashfs-tools.json
