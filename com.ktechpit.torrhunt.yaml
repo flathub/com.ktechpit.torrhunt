@@ -44,11 +44,11 @@ modules:
         - type: file
           # Get stable amd64 snap URL:
           # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/torrhunt | jq -r '.["channel-map"][] | select(.channel.architecture=="amd64" and   .channel.risk=="stable" and .channel.track=="latest") | .download.url'
-          url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_27.snap
+          url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_32.snap
 
           # Get sha256:
-          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_27.snap | sha256sum
-          sha256: 9cb7d22934c175560404ff8a6cbb49c023a172dad2ab6b1f472ed99e879333fe
+          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_32.snap | sha256sum
+          sha256: d40d0a762c090682193057bd3955ec29afdff2fb71b519be595971eec57f4d3f
 
           only-arches:
             - x86_64
@@ -59,13 +59,12 @@ modules:
         - type: file
           # Get stable arm64 snap URL:
           # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/torrhunt | jq -r '.["channel-map"][] | select(.channel.architecture=="arm64" and  .channel.risk=="stable" and .channel.track=="latest") | .download.url'
-          url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_28.snap
+          url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_33.snap
 
           # Get sha256:
-          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_28.snap | sha256sum
-          sha256: 8b49006d5dd6f2f608f9b2f467f3d68e87b2b197d5fc27448ea6162a999db821
+          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_33.snap | sha256sum
+          sha256: b226fadd3cb11bd557e0ffce519245e0ee89419831d1b7d961f29e3c8c734065
 
           only-arches:
             - aarch64
 
-#END 2024-05-10
