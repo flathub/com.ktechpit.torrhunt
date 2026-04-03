@@ -42,14 +42,8 @@ modules:
         # x86_64 (amd64) – stable
         # =========================
         - type: file
-          # Get stable amd64 snap URL:
-          # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/torrhunt | jq -r '.["channel-map"][] | select(.channel.architecture=="amd64" and   .channel.risk=="stable" and .channel.track=="latest") | .download.url'
-          url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_32.snap
-
-          # Get sha256:
-          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_32.snap | sha256sum
-          sha256: d40d0a762c090682193057bd3955ec29afdff2fb71b519be595971eec57f4d3f
-
+          url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_34.snap
+          sha256: 3fbd013c84d4f9a24cf336225230b39ffcd12b5923165f4ebb66e2a9dafdb118
           only-arches:
             - x86_64
 
@@ -57,14 +51,8 @@ modules:
         # arm64 (aarch64) – stable
         # =========================
         - type: file
-          # Get stable arm64 snap URL:
-          # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/torrhunt | jq -r '.["channel-map"][] | select(.channel.architecture=="arm64" and  .channel.risk=="stable" and .channel.track=="latest") | .download.url'
-          url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_33.snap
-
-          # Get sha256:
-          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_33.snap | sha256sum
-          sha256: b226fadd3cb11bd557e0ffce519245e0ee89419831d1b7d961f29e3c8c734065
-
+          url: https://api.snapcraft.io/api/v1/snaps/download/SkflXvnUfQ4KFuN0nAos1ykmgwZf0Ujl_35.snap
+          sha256: dc5271a0e1521c06fb61b9d74dff3efd242ea1524ca1fd3536ce4ce019a18b23
           only-arches:
             - aarch64
 
